@@ -1,5 +1,6 @@
 import { Store } from "@/models/Store";
 import { mockedStores } from "../mocks/offers";
+import { wait } from "@/utils/wait";
 
 /**
  * Retrieves the store identified by `id`, fails
@@ -9,8 +10,9 @@ import { mockedStores } from "../mocks/offers";
  * @throws {Error} When not found
  * @returns
  */
-// TODO: make this a promise
-export function getStore(id: string): Store {
+export async function getStore(id: string): Promise<Store> {
+  await wait(1500);
+
   const result = mockedStores.find((store) => store.id === id);
   if (!result) {
     throw new Error(`Store with ID "${id}" not found`);
