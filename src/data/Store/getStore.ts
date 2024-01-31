@@ -10,8 +10,8 @@ import { wait } from "@/utils/wait";
  * @throws {Error} When not found
  * @returns
  */
-export async function getStore(id: string): Promise<Store> {
-  await wait(1500);
+export function getStore(id: string): Store {
+  // await wait(1500);
 
   const result = mockedStores.find((store) => store.id === id);
   if (!result) {
