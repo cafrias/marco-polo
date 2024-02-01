@@ -1,13 +1,13 @@
-import React, { useCallback, useContext, useMemo, useState } from "react";
+import React, { useCallback } from "react";
 import { Modal } from "../../UI/Modal";
 import { GOOGLE_API_KEY } from "@/config";
 import { getStore } from "@/data/Store/getStore";
 import { Section } from "./components/Section";
 import { ContactItem } from "./components/ContactItem";
-import { useStoreModalState } from "./StoreModalProvider";
+import { useStoreModal } from "@/providers/store/store-modal-provider";
 
 export function StoreModal() {
-  const { selected, setSelected } = useStoreModalState();
+  const { selected, setSelected } = useStoreModal();
 
   const onClose = useCallback(() => {
     setSelected(null);

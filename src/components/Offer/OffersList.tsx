@@ -1,6 +1,6 @@
 import { Offer } from "@/models/Offer";
-import { useStoreModalState } from "../Store/StoreModal/StoreModalProvider";
 import { OfferCard } from "./OfferCard";
+import { useStoreModal } from "@/providers/store/store-modal-provider";
 
 interface OffersListProps {
   title: string;
@@ -8,7 +8,7 @@ interface OffersListProps {
 }
 
 export function OffersList({ title, offers }: OffersListProps) {
-  const { setSelected: setSelectedStore } = useStoreModalState();
+  const { setSelected: setSelectedStore } = useStoreModal();
 
   return (
     <section>

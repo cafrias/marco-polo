@@ -1,11 +1,11 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
-export interface StoreModalState {
+export interface StoreModalContext {
   selected: string | null;
   setSelected: (id: string | null) => void;
 }
 
-export const StoreModalContext = createContext<StoreModalState>({
+const Context = createContext<StoreModalContext>({
   selected: null,
   setSelected: () => {},
 });
@@ -13,20 +13,16 @@ export const StoreModalContext = createContext<StoreModalState>({
 export function StoreModalProvider({ children }: React.PropsWithChildren) {
   const [selected, setSelected] = useState<string | null>(null);
 
-  const state: StoreModalState = useMemo(() => {
+  const state: StoreModalContext = useMemo(() => {
     return {
       selected: selected,
       setSelected,
     };
   }, [selected]);
 
-  return (
-    <StoreModalContext.Provider value={state}>
-      {children}
-    </StoreModalContext.Provider>
-  );
+  return <Context.Provider value={state}>{children}</Context.Provider>;
 }
 
-export function useStoreModalState(): StoreModalState {
-  return useContext(StoreModalContext);
+export function useStoreModal(): StoreModalContext {
+  return useContext(Context);
 }
