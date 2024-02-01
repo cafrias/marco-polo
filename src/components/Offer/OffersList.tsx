@@ -13,15 +13,19 @@ export function OffersList({ title, offers }: OffersListProps) {
   return (
     <section>
       <h1 className="font-bold text-2xl mb-6">{title}</h1>
-      <ul className="flex flex-col gap-5">
-        {offers.map((offer) => {
-          return (
-            <li key={offer.id}>
-              <OfferCard onStore={setSelectedStore} offer={offer} />
-            </li>
-          );
-        })}
-      </ul>
+      {offers.length > 0 ? (
+        <ul className="flex flex-col gap-5">
+          {offers.map((offer) => {
+            return (
+              <li key={offer.id}>
+                <OfferCard onStore={setSelectedStore} offer={offer} />
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p>No offers found</p>
+      )}
     </section>
   );
 }
