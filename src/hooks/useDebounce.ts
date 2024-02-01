@@ -10,7 +10,6 @@ export function useDebounce<C extends (...args: any[]) => any>(
   time: number
 ): DebouncedFunc<C> {
   return useMemo(() => {
-    console.log("Debounce changed");
     return debounce(callback, time);
   }, [callback, time]);
 }
