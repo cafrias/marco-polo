@@ -1,6 +1,12 @@
 import { DEFAULT_MONEY_DIVISOR } from "../config";
 import type { SupportedCurrencies } from "./SupportedCurrencies";
 
+export interface SerializedMoney {
+  readonly currency: SupportedCurrencies;
+  readonly amount: number;
+  readonly divisor?: number;
+}
+
 export class Money {
   public readonly currency: SupportedCurrencies;
 

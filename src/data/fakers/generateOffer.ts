@@ -11,7 +11,7 @@ export function generateOffer(availableStores: Store[]): Offer {
   return {
     id: faker.string.uuid(),
     brand: generateBrand(),
-    expirationDate: faker.date.future({ years: 0.5 }),
+    expirationDate: faker.date.future({ years: 0.5 }).toISOString(),
     name: faker.commerce.product(),
     pictureUrl: faker.image.urlPicsumPhotos({ width: 150, height: 150 }),
     price: generateMoney(),

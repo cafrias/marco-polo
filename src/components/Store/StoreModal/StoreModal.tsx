@@ -1,21 +1,23 @@
-import React from "react";
-import { Modal } from "../UI/Modal";
+import React, { useCallback, useContext, useMemo, useState } from "react";
+import { Modal } from "../../UI/Modal";
 import { GOOGLE_API_KEY } from "@/config";
 import { getStore } from "@/data/Store/getStore";
 import { Section } from "./components/Section";
 import { ContactItem } from "./components/ContactItem";
+import { useStoreModalState } from "./StoreModalProvider";
 
-interface StoreModalProps {
-  store: string | null;
-  onClose: () => void;
-}
+export function StoreModal() {
+  const { selected, setSelected } = useStoreModalState();
 
-export function StoreModal({ store: storeId, onClose }: StoreModalProps) {
-  if (!storeId) {
+  const onClose = useCallback(() => {
+    setSelected(null);
+  }, [setSelected]);
+
+  if (!selected) {
     return null;
   }
 
-  const store = getStore(storeId);
+  const store = getStore(selected);
 
   const showContact = !!(store.phone || store.urls.length > 0);
 

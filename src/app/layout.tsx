@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { TopNav } from "@/components/UI/TopNav";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Marco Polo",
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <TopNav />
-        <main className="container">{children}</main>
+        <Providers>
+          <TopNav />
+          <main className="container">{children}</main>
+        </Providers>
       </body>
     </html>
   );
