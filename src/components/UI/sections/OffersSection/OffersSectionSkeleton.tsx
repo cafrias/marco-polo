@@ -1,6 +1,6 @@
 import { OfferCardSkeleton } from "@/components/Offer/OfferCardSkeleton";
 
-export function LatestSectionSkeleton() {
+export function OffersSectionSkeleton() {
   return (
     <div>
       <h1 className="font-bold text-2xl mb-6">Latest Offers</h1>

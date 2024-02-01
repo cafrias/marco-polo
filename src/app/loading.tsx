@@ -1,4 +1,4 @@
-import { LatestSectionSkeleton } from "@/components/UI/sections/LatestSectionSkeleton";
+import { OffersSectionSkeleton } from "@/components/UI/sections/OffersSection/OffersSectionSkeleton";
 
 export default function Loading() {
   return (
@@ -6,7 +6,7 @@ export default function Loading() {
       <div className="mb-8">
         <div className="skeleton w-full h-10 rounded-md"></div>
       </div>
-      <LatestSectionSkeleton />
+      <OffersSectionSkeleton />
     </div>
   );
 }

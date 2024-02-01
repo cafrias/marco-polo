@@ -3,8 +3,8 @@
 import { SearchForm } from "@/components/Search/SearchForm";
 import { StoreModal } from "@/components/Store/StoreModal/StoreModal";
 import { StoreModalProvider } from "@/components/Store/StoreModal/StoreModalProvider";
-import { LatestSection } from "@/components/UI/sections/LatestSection";
-import { LatestSectionSkeleton } from "@/components/UI/sections/LatestSectionSkeleton";
+import { OffersSection } from "@/components/UI/sections/OffersSection/OffersSection";
+import { OffersSectionSkeleton } from "@/components/UI/sections/OffersSection/OffersSectionSkeleton";
 import { Suspense } from "react";
 
 export default function Home() {
@@ -14,8 +14,8 @@ export default function Home() {
         <div className="mb-8">
           <SearchForm />
         </div>
-        <Suspense fallback={<LatestSectionSkeleton />}>
-          <LatestSection />
+        <Suspense fallback={<OffersSectionSkeleton />}>
+          <OffersSection />
         </Suspense>
         <StoreModal />
       </div>
