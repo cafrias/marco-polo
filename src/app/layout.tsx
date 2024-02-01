@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { TopNav } from "@/components/UI/TopNav";
 import "./globals.css";
-import { Providers } from "./providers";
+import { GlobalProviders } from "./providers";
+import { AriaLiveRegion } from "@/components/a11y/aria-live-region";
 
 export const metadata: Metadata = {
   title: "Marco Polo",
@@ -16,10 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
+        <GlobalProviders>
+          <AriaLiveRegion />
           <TopNav />
           <main className="container">{children}</main>
-        </Providers>
+        </GlobalProviders>
       </body>
     </html>
   );
