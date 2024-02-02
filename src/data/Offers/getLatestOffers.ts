@@ -18,7 +18,7 @@ export async function getLatestOffers({
   });
 
   const res = await fetch(
-    `http://localhost:3000/api/offers?${params.toString()}`
+    `http://localhost:3000/api/offers/latest?${params.toString()}`
   );
   if (!res.ok) {
     throw new Error(`Failed to fetch (code ${res.status})`);
