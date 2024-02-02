@@ -15,7 +15,7 @@ export function Modal({ title, open, children, onClose }: ModalProps) {
           <h1 className="text-xl">{title}</h1>
           <CloseButton onClick={onClose} autoFocus />
         </header>
-        <div className="p-4 overflow-y-scroll">{children}</div>
+        <div className="p-4 overflow-y-auto">{children}</div>
       </div>
       <div aria-hidden className="modal-backdrop bg-slate-600 bg-opacity-25">
         <button onClick={onClose}>close</button>
