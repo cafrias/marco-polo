@@ -20,7 +20,7 @@ export default function RootLayout({
         <GlobalProviders>
           <AriaLiveRegion />
           <TopNav />
-          <main className="container">{children}</main>
+          <main className="pt-16">{children}</main>
         </GlobalProviders>
       </body>
     </html>

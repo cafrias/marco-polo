@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <StoreModalProvider>
       <SearchProvider>
-        <div className="container px-4 pt-6 pb-4">
+        <div className="container mx-auto px-4 pt-6 pb-4">
           <div className="mb-8">
             <SearchForm />
           </div>
