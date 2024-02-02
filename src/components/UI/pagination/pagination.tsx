@@ -4,15 +4,15 @@ import { useMemo } from "react";
 
 import chevLeft from "@/assets/icons/double-chevron-left.svg";
 import chevRight from "@/assets/icons/double-chevron-right.svg";
-import Link from "next/link";
 import classNames from "classnames";
 
 interface PaginationProps {
   total: number;
   current: number;
+  onPage: (page: number) => void;
 }
 
-export function Pagination({ total, current }: PaginationProps) {
+export function Pagination({ total, current, onPage }: PaginationProps) {
   const hasPrevious = current > 1;
   const hasNext = current < total;
 
@@ -47,18 +47,22 @@ export function Pagination({ total, current }: PaginationProps) {
     return result;
   }, [current, total]);
 
+  if (total === 1) {
+    return null;
+  }
+
   return (
     <nav aria-label="pagination" className="w-full flex justify-center">
       <ul className="join">
         {hasPrevious && (
           <li className="join-item btn btn-square">
-            <Link
+            <button
               className="p-4"
               title="Previous Page"
-              href={`?p=${current - 1}`}
+              onClick={() => onPage(current - 1)}
             >
-              <Image src={chevLeft} alt="" />
-            </Link>
+              <Image width={25} height={25} src={chevLeft} alt="" />
+            </button>
           </li>
         )}
         {toRender.map((pageNumber, idx) => {
@@ -83,22 +87,26 @@ export function Pagination({ total, current }: PaginationProps) {
               })}
               key={pageNumber}
             >
-              <Link
+              <button
                 className="text-center"
-                href={`?p=${pageNumber}`}
                 aria-current={isCurrent ? "page" : undefined}
+                aria-label={`Go to Page "${pageNumber}"`}
+                onClick={() => onPage(pageNumber)}
               >
-                <span className="inline-block w-0 h-0 invisible">page</span>{" "}
                 {pageNumber}
-              </Link>
+              </button>
             </li>
           );
         })}
         {hasNext && (
           <li className="join-item btn btn-square">
-            <Link className="p-4" title="Next Page" href={`?p=${current + 1}`}>
-              <Image src={chevRight} alt="" />
-            </Link>
+            <button
+              className="p-4"
+              title="Next Page"
+              onClick={() => onPage(current + 1)}
+            >
+              <Image width={25} height={25} src={chevRight} alt="" />
+            </button>
           </li>
         )}
       </ul>

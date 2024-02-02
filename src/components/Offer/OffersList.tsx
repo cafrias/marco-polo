@@ -1,14 +1,14 @@
 import { Offer } from "@/models/Offer";
 import { OfferCard } from "./OfferCard";
 import { useStoreModal } from "@/providers/store/store-modal-provider";
-import { Pagination } from "../UI/pagination/pagination";
 
 interface OffersListProps {
   title: string;
   offers: Offer[];
+  children?: React.ReactNode;
 }
 
-export function OffersList({ title, offers }: OffersListProps) {
+export function OffersList({ title, offers, children }: OffersListProps) {
   const { setSelected: setSelectedStore } = useStoreModal();
 
   return (
@@ -27,7 +27,7 @@ export function OffersList({ title, offers }: OffersListProps) {
       ) : (
         <p>No offers found</p>
       )}
-      <Pagination current={5} total={25} />
+      {children}
     </section>
   );
 }

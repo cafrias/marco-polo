@@ -1,6 +1,19 @@
-export function OfferCardSkeleton() {
+const OPACITY_START = 0.6;
+const OPACITY_DELTA = 0.15;
+
+export interface OfferCardSkeletonProps {
+  position: number;
+}
+
+export function OfferCardSkeleton({ position }: OfferCardSkeletonProps) {
   return (
-    <div className="flex" aria-label="Loading ...">
+    <div
+      className="flex"
+      aria-label="Loading ..."
+      style={{
+        opacity: OPACITY_START - position * OPACITY_DELTA,
+      }}
+    >
       <div className="mr-2 w-1/4">
         <div className="skeleton w-full h-full rounded-none"></div>
       </div>
