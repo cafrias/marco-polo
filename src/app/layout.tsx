@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { TopNav } from "@/components/UI/TopNav";
 import "./globals.css";
 import { GlobalProviders } from "./providers";
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <GlobalProviders>
+          <ReactQueryDevtools initialIsOpen={false} />
           <AriaLiveRegion />
           <TopNav />
           <main className="pt-16">{children}</main>
