@@ -1,5 +1,6 @@
 import type { Brand } from "./Brand";
 import type { SerializedMoney } from "./Money";
+import { Picture } from "./Picture";
 import type { Store } from "./Store";
 
 export interface Offer {
@@ -9,6 +10,6 @@ export interface Offer {
   brand: Brand;
   qty: number;
   expirationDate: string;
-  pictureUrl: string;
-  store: Pick<Store, "id" | "name">;
+  pictureURL: Picture;
+  store: Store;
 }

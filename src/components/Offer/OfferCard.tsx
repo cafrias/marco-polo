@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Offer } from "../../models/Offer";
 import { useMemo } from "react";
 import { Money } from "@/models/Money";
+import { resolveApiUrl } from "@/utils/resolveApiUrl";
 
 interface OfferCardProps {
   offer: Offer;
@@ -17,12 +18,16 @@ export function OfferCard({ offer, onStore }: OfferCardProps) {
     return new Money(offer.price);
   }, [offer.price]);
 
+  const imgSrc = resolveApiUrl(
+    offer.pictureURL.sizes.card.url || offer.pictureURL.url
+  );
+
   return (
     <article className="flex border border-base-200 rounded-r-xl">
       <div className="flex flex-col mr-2 w-1/4">
         <Image
           className="w-full"
-          src={offer.pictureUrl}
+          src={imgSrc}
           alt=""
           height={150}
           width={150}

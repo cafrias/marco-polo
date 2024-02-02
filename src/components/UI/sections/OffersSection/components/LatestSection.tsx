@@ -4,7 +4,7 @@ import { OffersList } from "@/components/Offer/OffersList";
 
 export function LatestSection() {
   const {
-    data: { data: offers },
+    data: { docs: offers },
   } = useSuspenseQuery({
     queryKey: ["offers/latest"],
     queryFn: getLatestOffers,

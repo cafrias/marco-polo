@@ -1,6 +1,4 @@
 import { Store } from "@/models/Store";
-import { mockedStores } from "../mocks/offers";
-import { wait } from "@/utils/wait";
 
 /**
  * Retrieves the store identified by `id`, fails
@@ -11,12 +9,10 @@ import { wait } from "@/utils/wait";
  * @returns
  */
 export async function getStore(id: string): Promise<Store> {
-  await wait(800);
-
-  const result = mockedStores.find((store) => store.id === id);
-  if (!result) {
-    throw new Error(`Store with ID "${id}" not found`);
+  const res = await fetch(`http://localhost:3000/api/stores/${id}`);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch (code ${res.status})`);
   }
 
-  return result;
+  return res.json();
 }

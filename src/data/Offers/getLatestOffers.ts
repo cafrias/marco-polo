@@ -1,10 +1,11 @@
 import { Offer } from "@/models/Offer";
-import { wait } from "@/utils/wait";
-import { mockedOffers } from "../mocks/offers";
+import { GetManyResponse } from "@/models/api/GetManyResponse";
 
-export async function getLatestOffers(): Promise<{ data: Offer[] }> {
-  await wait(1500);
-  return {
-    data: mockedOffers,
-  };
+export async function getLatestOffers(): Promise<GetManyResponse<Offer>> {
+  const res = await fetch("http://localhost:3000/api/offers");
+  if (!res.ok) {
+    throw new Error(`Failed to fetch (code ${res.status})`);
+  }
+
+  return res.json();
 }

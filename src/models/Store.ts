@@ -3,7 +3,7 @@ import type { URLTypes } from "./URLTypes";
 export interface Store {
   id: string;
   name: string;
-  location: { lat: number; lng: number };
+  location: [number, number];
   address?: string;
   phone?: string;
   email?: string;

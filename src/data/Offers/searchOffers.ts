@@ -1,12 +1,11 @@
 import { Offer } from "@/models/Offer";
-import { wait } from "@/utils/wait";
-import { mockedOffers } from "../mocks/offers";
+import { getLatestOffers } from "./getLatestOffers";
 
 export async function searchOffers(term: string): Promise<{ data: Offer[] }> {
-  await wait(1500);
+  const { docs: offers } = await getLatestOffers();
 
-  const result = mockedOffers.filter((offers) => {
-    return new RegExp(term, "i").test(offers.name);
+  const result = offers.filter((offer) => {
+    return new RegExp(term, "i").test(offer.name);
   });
 
   return {

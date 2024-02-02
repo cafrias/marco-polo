@@ -30,7 +30,7 @@ export function Content({ selected }: ContentProps) {
               frameBorder="0"
               style={{ border: 0 }}
               referrerPolicy="no-referrer-when-downgrade"
-              src={`https://www.google.com/maps/embed/v1/place?key=${GOOGLE_API_KEY}&q=${store.location.lat},${store.location.lng}`}
+              src={`https://www.google.com/maps/embed/v1/place?key=${GOOGLE_API_KEY}&q=${store.location[0]},${store.location[1]}`}
               allowFullScreen
             ></iframe>
           </div>
