@@ -83,12 +83,12 @@ export function Pagination({ total, current, onPage }: PaginationProps) {
             <li
               className={classNames("md:flex join-item btn btn-square", {
                 hidden: !isCurrent,
-                "btn-primary": isCurrent,
+                "btn-secondary": isCurrent,
               })}
               key={pageNumber}
             >
               <button
-                className="text-center"
+                className="text-center w-full h-full"
                 aria-current={isCurrent ? "page" : undefined}
                 aria-label={`Go to Page "${pageNumber}"`}
                 onClick={() => onPage(pageNumber)}
