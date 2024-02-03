@@ -1,3 +1,4 @@
+import { API_URL } from "@/config";
 import { Store } from "@/models/Store";
 
 /**
@@ -9,7 +10,7 @@ import { Store } from "@/models/Store";
  * @returns
  */
 export async function getStore(id: string): Promise<Store> {
-  const res = await fetch(`http://localhost:3000/api/stores/${id}`);
+  const res = await fetch(`${API_URL}/api/stores/${id}`);
   if (!res.ok) {
     throw new Error(`Failed to fetch (code ${res.status})`);
   }

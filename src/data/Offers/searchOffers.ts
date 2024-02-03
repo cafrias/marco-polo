@@ -1,3 +1,4 @@
+import { API_URL } from "@/config";
 import { Offer } from "@/models/Offer";
 import { GetManyResponse } from "@/models/api/GetManyResponse";
 
@@ -18,9 +19,7 @@ export async function searchOffers(
     page: page ? `${page}` : "",
   });
 
-  const res = await fetch(
-    `http://localhost:3000/api/offers/search?${params.toString()}`
-  );
+  const res = await fetch(`${API_URL}/api/offers/search?${params.toString()}`);
   if (!res.ok) {
     throw new Error(`Failed to fetch (code ${res.status})`);
   }

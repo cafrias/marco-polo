@@ -1,3 +1,5 @@
+import { API_URL } from "@/config";
+
 export function resolveApiUrl(path: string): string {
-  return `http://localhost:3000${path}`;
+  return `${API_URL}${path}`;
 }
