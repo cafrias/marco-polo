@@ -5,12 +5,11 @@ import { ResultsSection } from "./components/ResultsSection";
 interface OffersSectionProps {}
 
 export function OffersSection({}: OffersSectionProps) {
-  // TODO: will have the search state logic
-  // const { term } = useSearch();
+  const { term } = useSearch();
 
-  // if (term) {
-  //   return <ResultsSection term={term} />;
-  // }
+  if (term) {
+    return <ResultsSection term={term} />;
+  }
 
   return <LatestSection />;
 }

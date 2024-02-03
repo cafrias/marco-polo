@@ -1,14 +1,29 @@
 import { Offer } from "@/models/Offer";
-import { getLatestOffers } from "./getLatestOffers";
+import { GetManyResponse } from "@/models/api/GetManyResponse";
 
-export async function searchOffers(term: string): Promise<{ data: Offer[] }> {
-  const { docs: offers } = await getLatestOffers();
+export const DEFAULT_SEARCH_LIMIT = 10;
 
-  const result = offers.filter((offer) => {
-    return new RegExp(term, "i").test(offer.name);
+export interface SearchOffersOptions {
+  page?: number;
+  limit?: number;
+}
+
+export async function searchOffers(
+  term: string,
+  { limit = DEFAULT_SEARCH_LIMIT, page }: SearchOffersOptions = {}
+): Promise<GetManyResponse<Offer>> {
+  const params = new URLSearchParams({
+    q: term,
+    limit: `${limit}`,
+    page: page ? `${page}` : "",
   });
 
-  return {
-    data: result,
-  };
+  const res = await fetch(
+    `http://localhost:3000/api/offers/search?${params.toString()}`
+  );
+  if (!res.ok) {
+    throw new Error(`Failed to fetch (code ${res.status})`);
+  }
+
+  return res.json();
 }
